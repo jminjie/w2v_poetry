@@ -28,7 +28,7 @@ def plot_data_1d(orig_data, labels):
 
     data0 = np.append(data, np.zeros([len(data), 1]), 1)
 
-    fig, ax = plt.subplots(figsize= (10, 10))
+    fig, ax = plt.subplots(figsize= (9, 9))
     fig.patch.set_facecolor(BG_WHITE)
     ax.set_facecolor(BG_WHITE)
 
@@ -39,7 +39,7 @@ def plot_data_1d(orig_data, labels):
         x = data0[i, 0]
         y = data0[i, 1]
         text = labels[i]
-        TEXTS.append(ax.text(x, y, text, color=GREY30, fontsize=10, fontname="Poppins"))
+        TEXTS.append(ax.text(x, y, text, color=GREY30, fontsize=13, fontname="Poppins"))
 
     plt.grid('on')
 
@@ -82,7 +82,7 @@ def plot_data_2d_2(orig_data, labels):
     pca = PCA(n_components=2)
     data = pca.fit_transform(orig_data)
 
-    fig, ax = plt.subplots(figsize= (10, 10))
+    fig, ax = plt.subplots(figsize= (9, 9))
     fig.patch.set_facecolor(BG_WHITE)
     ax.set_facecolor(BG_WHITE)
 
@@ -93,13 +93,13 @@ def plot_data_2d_2(orig_data, labels):
         x = data[i, 0]
         y = data[i, 1]
         text = labels[i]
-        TEXTS.append(ax.text(x, y, text, color=GREY30, fontsize=10, fontname="Poppins"))
+        TEXTS.append(ax.text(x, y, text, color=GREY30, fontsize=11, fontname="Poppins"))
 
     plt.grid('on')
 
     adjust_text(
             TEXTS, 
-            expand_points=(1.3, 1.3),
+            expand_points=(1.5, 1.5),
             arrowprops=dict(
                 arrowstyle="-", 
                 color=GREY50, 
@@ -120,7 +120,7 @@ def plot_data_2d_2(orig_data, labels):
 def plot_analogies(words):
     labels = words
     data = [w2v[w] for w in labels]
-    plot_data(data, labels)
+    plot_data_2d_2(data, labels)
 
 def projection(base, vec):
     return base * np.dot(vec, base) / np.dot(base, base)
@@ -170,4 +170,3 @@ NEWS = ['foxnews', 'cnn', 'nbcnews', 'cbsnews', 'abcnews']
 #do_analogy('boy', 'girl', 'huh')
 
 sort_list_by_gender(NEWS)
-
