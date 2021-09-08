@@ -1,4 +1,4 @@
-# Newly Gendered THings
+# Sorting words by gender with W2V
 
 This demo uses the pretrained Gensim Twitter Word2Vec model.
 See [here](https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html) for more info.
