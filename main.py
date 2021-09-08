@@ -28,19 +28,49 @@ def plot_data_1d(orig_data, labels):
 
     data0 = np.append(data, np.zeros([len(data), 1]), 1)
 
-    with plt.style.context('bmh'):
-        plt.figure(figsize=(20, 5), dpi=100)
-        plt.plot(data0[:,0], data0[:,1], '.')
-        for i in range(len(data0)):
-            plt.annotate(labels[i], xy = data0[i])
-        plt.grid('on')
-        plt.show()
+    fig, ax = plt.subplots(figsize= (10, 10))
+    fig.patch.set_facecolor(BG_WHITE)
+    ax.set_facecolor(BG_WHITE)
+
+    ax.scatter(x=data0[:,0], y=data0[:,1])
+    TEXTS = []
+    for i in range(len(data0)):
+        #plt.annotate(labels[i], xy = data0[i])
+        x = data0[i, 0]
+        y = data0[i, 1]
+        text = labels[i]
+        TEXTS.append(ax.text(x, y, text, color=GREY30, fontsize=10, fontname="Poppins"))
+
+    plt.grid('on')
+
+    adjust_text(
+            TEXTS,
+            expand_points=(1.3, 1.3),
+            arrowprops=dict(
+                arrowstyle="-",
+                color=GREY50,
+                lw=0
+                ),
+            ax=fig.axes[0]
+            )
+    ax.set_ylabel("")
+    ax.set_yticklabels([])
+    ax.set_xticklabels([])
+    ax.spines["right"].set_color("none")
+    ax.spines["left"].set_color("none")
+    ax.spines["top"].set_color("none")
+    ax.spines["bottom"].set_color("none")
+
+    plt.show()
 
 def plot_data_2d(orig_data, labels):
     pca = PCA(n_components=2)
     data = pca.fit_transform(orig_data)
 
     plt.figure(figsize=(7, 5), dpi=100)
+    fig, ax = plt.subplots()
+    fig.patch.set_facecolor(BG_WHITE)
+    ax.set_facecolor(BG_WHITE)
     plt.plot(data[:,0], data[:,1], '.')
     for i in range(len(data)):
         plt.annotate(labels[i], xy = data[i])
@@ -132,12 +162,12 @@ CARDINAL_DIRECTIONS = ['north', 'east', 'south', 'west']
 STUDIOS = ['disney', 'pixar', 'dreamworks']
 SLANG = ['haha', 'huh', 'wtf', 'lolol']
 NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-COMPOSERS=['MOZART', 'bach', 'beethoven', 'debussy', 'schoenberg']
+COMPOSERS=['mozart', 'bach', 'beethoven', 'debussy', 'schoenberg']
 NEWS = ['foxnews', 'cnn', 'nbcnews', 'cbsnews', 'abcnews']
 
 #plot_analogies(['boy', 'girl', 'huh', 'lolol', 'orgasm', 'orgasms'])
 #plot_projected('boy', 'girl', 'huh', 'lolol')
 #do_analogy('boy', 'girl', 'huh')
 
-sort_list_by_gender(FRUITS)
+sort_list_by_gender(NEWS)
 
