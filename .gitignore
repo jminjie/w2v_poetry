@@ -1,0 +1,4 @@
+*.swp
+.DS_Store
+gensim-data
+saved_model*
