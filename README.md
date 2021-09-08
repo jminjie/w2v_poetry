@@ -14,13 +14,19 @@ python3 -i main.py
 
 ## Other graphs
 To plot word embeddings in 2D
-`>>> plot_analogies(['boy', 'girl', 'pants', 'leggings'])`
+```
+>>> plot_analogies(['boy', 'girl', 'pants', 'leggings'])
+```
 
 To plot projected/flattened word embeddings in 2D
-`>>> plot_projected(['boy', 'girl', 'pants', 'leggings'])`
+```
+>>> plot_projected(['boy', 'girl', 'pants', 'leggings'])
+```
 
 To do W2V analogies
-`>>> do_analogy('boy', 'girl', 'pants')`
+```
+>>> do_analogy('boy', 'girl', 'pants')
+```
 
 Note that certain claims regarding gendered analogies may not be completely
 true. See [here](https://blog.esciencecenter.nl/king-man-woman-king-9a7fd2935a85?gi=65626e818925)
